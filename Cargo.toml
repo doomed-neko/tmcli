@@ -1,0 +1,18 @@
+[package]
+name = "tmcli"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+chrono = "0.4.41"
+clap = { version = "4.5.41", features = ["derive"] }
+color-eyre = "0.6.5"
+colored = "3.0.0"
+email_address = "0.2.9"
+serde_json = "1.0.141"
+# tmapi = "*"
+tokio = { version = "1.46.1", features = ["rt-multi-thread", "macros"] }
+
+[dependencies.tmapi]
+git = "https://github.com/doomed-neko/tmapi"
+version = "0.1.1"
