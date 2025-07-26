@@ -19,7 +19,7 @@ mod opts {
 }
 
 #[derive(Parser, Clone)]
-#[command(version, about)]
+#[command(version)]
 struct Cli {
     /// Use json output
     #[arg(short, long)]
@@ -32,7 +32,7 @@ struct Cli {
     command: Commands,
 }
 
-#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum, Default)]
+#[derive(Copy, Clone, ValueEnum, Default)]
 enum ColorOptions {
     Always,
     #[default]
