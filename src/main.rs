@@ -48,11 +48,11 @@ enum Commands {
         #[arg(short, long)]
         email: String,
 
-        /// Only return this much emails, defaults to 10 and the max is 100
+        /// Only return this much emails, max is 100
         #[arg(short, long, default_value_t = 10)]
         limit: u8,
 
-        /// Skip this many emails and return the rest, defaults to 0
+        /// Skip this many emails and return the rest
         #[arg(short, long, default_value_t = 0)]
         offset: u32,
     },
