@@ -1,3 +1,5 @@
+![tests status](https://github.com/doomed-neko/tmapi/workflows/Rust/badge.svg)
+
 # TempMailCLI
 
 This is a command line application using my [tmapi](https://github.com/doomed-neko/tmapi/) library.
