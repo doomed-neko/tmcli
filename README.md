@@ -1,4 +1,4 @@
-![tests status](https://github.com/doomed-neko/tmapi/workflows/Rust/badge.svg)
+![tests status](https://github.com/doomed-neko/tmcli/workflows/Rust/badge.svg)
 
 # TempMailCLI
 
