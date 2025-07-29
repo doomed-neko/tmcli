@@ -1,7 +1,7 @@
 use clap::{Parser, Subcommand, ValueEnum};
 use color_eyre::Result;
 
-use crate::handlers::{delete, delete_all, list, open};
+use crate::handlers::{count, delete, delete_all, list, open};
 
 mod handlers;
 mod opts {
@@ -74,6 +74,12 @@ enum Commands {
         #[arg(short, long)]
         id: String,
     },
+
+    /// Get email count
+    Count {
+        #[arg(short, long)]
+        email: String,
+    },
 }
 
 #[tokio::main]
@@ -81,16 +87,18 @@ enum Commands {
 async fn main() -> Result<()> {
     color_eyre::install()?;
     let cli = Cli::parse();
+    let json = cli.json;
     opts::colors(cli.color);
     match cli.command {
         Commands::List {
             email,
             limit,
             offset,
-        } => list(email, limit, offset, cli.json).await?,
-        Commands::Open { id } => open(id, cli.json).await?,
-        Commands::DeleteAll { email } => delete_all(email, cli.json).await?,
-        Commands::Delete { id } => delete(id, cli.json).await?,
+        } => list(email, limit, offset, json).await?,
+        Commands::Open { id } => open(id, json).await?,
+        Commands::DeleteAll { email } => delete_all(email, json).await?,
+        Commands::Delete { id } => delete(id, json).await?,
+        Commands::Count { email } => count(email, json).await?,
     };
     Ok(())
 }

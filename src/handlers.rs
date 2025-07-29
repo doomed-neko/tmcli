@@ -132,3 +132,23 @@ pub async fn delete(id: String, json: bool) -> Result<()> {
     }
     color_eyre::eyre::Ok(())
 }
+
+pub async fn count(email: String, json: bool) -> Result<()> {
+    let client = tmapi::Client::new(email).unwrap();
+    let result = client.email_count().await;
+    match result {
+        Ok(count) => {
+            let count = count.to_string();
+            if json {
+                println!("{count}");
+                return color_eyre::eyre::Ok(());
+            }
+            println!("{}: You have {} emails", "INFO".cyan().bold(), count.cyan());
+        }
+        Err(e) => {
+            eprintln!("{}: Failed to delete email: {e}", "ERROR".red().bold());
+            exit(1);
+        }
+    }
+    color_eyre::eyre::Ok(())
+}
